@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  @apply box-border h-full;
+}
+
+body {
+  @apply h-full;
+}
+
+app-root {
+  @apply h-full flex flex-col;
+}
