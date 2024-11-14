@@ -7,7 +7,7 @@ table {
 }
 
 thead th {
-  @apply bg-gray-100 text-gray-700 uppercase text-sm leading-normal py-3 px-6 text-left border-b border-gray-300;
+  @apply bg-gray-100 text-gray-600 uppercase text-sm leading-normal py-3 px-6 text-left border-b border-gray-300;
 }
 
 tbody tr {
@@ -15,5 +15,38 @@ tbody tr {
 }
 
 tbody td {
-  @apply py-3 px-6 text-left whitespace-nowrap text-gray-800;
-}
+  @apply py-3 px-6 text-left whitespace-nowrap;
+  }
+  
+  /* Responsive styles for mobile (small screens) */
+  @media (max-width: 640px) {
+    tbody td {
+      @apply text-xs py-2 px-3;
+    }
+  
+    thead th {
+      @apply py-2 px-3 text-xs;
+    }
+  }
+  
+  /* Responsive styles for tablets (medium screens) */
+  @media (min-width: 768px) {
+    tbody td {
+      @apply text-sm py-3 px-4;
+    }
+  
+    thead th {
+      @apply py-3 px-4 text-sm;
+    }
+  }
+  
+  /* Responsive styles for larger screens (large screens and desktops) */
+  @media (min-width: 1024px) {
+    tbody td {
+      @apply text-base py-4 px-5;
+    }
+  
+    thead th {
+      @apply py-4 px-5 text-base;
+    }
+  }

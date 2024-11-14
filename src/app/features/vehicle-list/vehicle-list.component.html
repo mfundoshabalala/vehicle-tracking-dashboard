@@ -1,22 +1,24 @@
 <table class="min-w-full bg-white border border-gray-300">
   <thead>
     <tr>
+      <th class="px-4 py-2">ID</th>
       <th class="px-4 py-2">Registration</th>
       <th class="px-4 py-2">Latitude</th>
       <th class="px-4 py-2">Longitude</th>
       <th class="px-4 py-2">Latest Update</th>
-      <th class="px-4 py-2">Status</th>
+      <!-- <th class="px-4 py-2">Status</th> -->
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let vehicle of vehicles" (click)="onVehicleSelect(vehicle)" class="border-t cursor-pointer">
+      <td class="px-4 py-2">{{ vehicle.id }}</td>
       <td class="px-4 py-2">{{ vehicle.registration }}</td>
-      <td class="px-4 py-2">{{ vehicle.latitude }}</td>
-      <td class="px-4 py-2">{{ vehicle.longitude }}</td>
+      <td class="px-4 py-2">{{ vehicle.latitude | number:'1.2-4' }}</td>
+      <td class="px-4 py-2">{{ vehicle.longitude | number:'1.2-4' }}</td>
       <td class="px-4 py-2">{{ vehicle.timestamp | date:'short' }}</td>
-      <td class="px-4 py-2">
+      <!-- <td class="px-4 py-2">
         <app-status-indicator [status]="vehicle.status"></app-status-indicator>
-      </td>
+      </td> -->
     </tr>
   </tbody>
 </table>

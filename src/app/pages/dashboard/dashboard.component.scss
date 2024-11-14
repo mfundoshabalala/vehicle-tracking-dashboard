@@ -1,19 +1,7 @@
-:host {
-  @apply block overflow-x-auto;
+.filter-section {
+  @apply flex items-center justify-center mb-4;
 }
 
-table {
-  @apply min-w-full bg-white border border-gray-200;
-}
-
-thead th {
-  @apply bg-gray-100 text-gray-600 uppercase text-sm leading-normal py-3 px-6 text-left border-b border-gray-300;
-}
-
-tbody tr {
-  @apply border-b border-gray-200 hover:bg-gray-100;
-}
-
-tbody td {
-  @apply py-3 px-6 text-left whitespace-nowrap;
+.filter-input {
+  @apply p-2 w-full max-w-xs border border-gray-300 rounded;
 }

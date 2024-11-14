@@ -10,7 +10,7 @@ import { MapService } from '../../core/services/map.service';
   template: `
   <header class="bg-white shadow text-gray-800">
     <div class="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex flex-wrap justify-between">
-      <h1 class="text-3xl font-bold tracking-tight">Dashboard</h1>
+      <h2>Dashboard</h2>
       <div class="space-x-4">
         <button type="button" [disabled]="!showMap" (click)="toggleShowMap(false)">List View</button>
         <button type="button" [disabled]="showMap" (click)="toggleShowMap(true)">Map View</button>

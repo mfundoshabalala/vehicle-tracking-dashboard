@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-  <footer>&copy; 2024 Your Company, Inc. All rights reserved.</footer>
+  <footer>&copy; 2024 TrackFleet, Inc. All rights reserved.</footer>
   `,
   styles: `
   :host {

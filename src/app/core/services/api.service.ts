@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { ToastService } from './toast.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class ApiService {
   private vehicles$ = this.vehicleSubject.asObservable();
   private mockDataUrl = 'assets/data/mock-data.json';
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toastService: ToastService) {
     this.startSimulatingMovement();
     this.loadInitialData();
   }
@@ -36,6 +37,7 @@ export class ApiService {
           longitude: this.adjustCoordinate(vehicle.longitude),
           timestamp: new Date()
         };
+        this.toastService.showToast(`Location updated for vehicle: ${vehicle.id}`);
         return updatedVehicle;
       });
 
