@@ -1,16 +1,21 @@
-<table>
+<table class="min-w-full bg-white border border-gray-300">
   <thead>
     <tr>
-      <th *ngFor="let header of headers">{{ header | titlecase }}</th>
+      <th class="px-4 py-2">Registration</th>
+      <th class="px-4 py-2">Latitude</th>
+      <th class="px-4 py-2">Longitude</th>
+      <th class="px-4 py-2">Latest Update</th>
+      <th class="px-4 py-2">Status</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let row of rows; let rowIndex = index">
-      <td *ngFor="let cell of row; let cellIndex = index">
-        <ng-container *ngIf="headers[cellIndex] === 'status'; else regularCell">
-          <app-status-indicator [status]="cell"></app-status-indicator>
-        </ng-container>
-        <ng-template #regularCell>{{ cell }}</ng-template>
+    <tr *ngFor="let vehicle of vehicles" (click)="onVehicleSelect(vehicle)" class="border-t cursor-pointer">
+      <td class="px-4 py-2">{{ vehicle.registration }}</td>
+      <td class="px-4 py-2">{{ vehicle.latitude }}</td>
+      <td class="px-4 py-2">{{ vehicle.longitude }}</td>
+      <td class="px-4 py-2">{{ vehicle.timestamp | date:'short' }}</td>
+      <td class="px-4 py-2">
+        <app-status-indicator [status]="vehicle.status"></app-status-indicator>
       </td>
     </tr>
   </tbody>

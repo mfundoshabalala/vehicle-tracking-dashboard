@@ -1,5 +1,7 @@
+// dashboard.component.ts
+
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnInit, ViewChild } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 import { Vehicle } from '../../core/models/vehicle.model';
@@ -14,13 +16,13 @@ import { MapService } from '../../core/services/map.service';
   imports: [CommonModule, MapViewComponent, VehicleListComponent],
   template: `
   <div *ngIf="!showMap" [@fadeInOut]>
-    <app-vehicle-list [vehicles]="vehicles"></app-vehicle-list>
+    <app-vehicle-list [vehicles]="vehicles" (vehicleSelected)="centerMapOnVehicle($event)"></app-vehicle-list>
   </div>
   <div *ngIf="showMap" [@fadeInOut]>
-    <app-map-view [vehicles]="vehicles"></app-map-view>
+    <app-map-view [vehicles]="showSingleVehicle ? [selectedVehicle] : vehicles" #vehicleMap></app-map-view>
   </div>
   `,
-  styleUrl: './dashboard.component.scss',
+  styleUrls: ['./dashboard.component.scss'],
   animations: [
     trigger('fadeInOut', [
       transition(':enter', [
@@ -36,15 +38,29 @@ import { MapService } from '../../core/services/map.service';
 export class DashboardComponent implements OnInit {
   showMap = false;
   protected vehicles: Vehicle[] = [];
+  selectedVehicle!: Vehicle;
+  showSingleVehicle = false;
+
+  @ViewChild('vehicleMap') vehicleMap!: MapViewComponent;
 
   private mapService = inject(MapService);
   private vehicleService = inject(VehicleService);
 
   ngOnInit() {
-    this.vehicleService.getVehicles().subscribe((data) => {
-      this.vehicles = data;
+    this.vehicleService.getVehicleLocations().subscribe((vehicles) => {
+      this.vehicles = vehicles;
     });
 
     this.mapService.showMap$.subscribe((value) => this.showMap = value);
+  }
+
+  centerMapOnVehicle(vehicle: Vehicle) {
+    this.selectedVehicle = vehicle;
+    this.showSingleVehicle = true;
+    this.mapService.setShowMap(true);
+
+    setTimeout(() => {
+      this.vehicleMap?.centerOnLocation({ latitude: vehicle.latitude, longitude: vehicle.longitude });
+    }, 0);
   }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { ApiService } from './api.service';
@@ -8,13 +8,9 @@ import { Vehicle } from '../models/vehicle.model';
   providedIn: 'root'
 })
 export class VehicleService {
-  constructor(private apiService: ApiService) {}
+  private apiService = inject(ApiService);
 
-  getVehicles(): Observable<Vehicle[]> {
+  getVehicleLocations(): Observable<Vehicle[]> {
     return this.apiService.get();
-  }
-
-  updateVehicle(id:string, updatedVehicle: Partial<Vehicle>) {
-    return this.apiService.update(id, updatedVehicle);
   }
 }

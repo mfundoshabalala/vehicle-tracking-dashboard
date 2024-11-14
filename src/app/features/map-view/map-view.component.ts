@@ -1,5 +1,5 @@
 
-import { AfterViewInit, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as L from 'leaflet';
 import 'leaflet/dist/images/marker-icon.png';
@@ -14,13 +14,17 @@ import { Vehicle } from '../../core/models/vehicle.model';
   templateUrl: './map-view.component.html',
   styleUrl: './map-view.component.scss'
 })
-export class MapViewComponent implements OnChanges, AfterViewInit {
+export class MapViewComponent implements OnChanges, AfterViewInit, OnInit {
   private map!: L.Map;
   markers: L.Marker[] = [];
   @Input() vehicles: Vehicle[] = [];
 
-  ngOnChanges(changes: SimpleChanges): void {
-    if (changes['vehicles'] && this.map) {
+  ngOnInit() {
+    this.initializeMap();
+  }
+
+  ngOnChanges(): void {
+    if (this.vehicles.length && this.map) {
       this.clearMarkers();
       this.addMarkers();
       this.centerMap();
@@ -28,7 +32,6 @@ export class MapViewComponent implements OnChanges, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.initializeMap();
     this.addMarkers();
     this.centerMap();
   }
@@ -49,7 +52,7 @@ export class MapViewComponent implements OnChanges, AfterViewInit {
   }
 
   private clearMarkers() {
-    this.markers.forEach((marker) => marker.remove);
+    this.markers.forEach((marker) => marker.remove());
     this.markers = [];
   }
 
@@ -74,5 +77,9 @@ export class MapViewComponent implements OnChanges, AfterViewInit {
       const group = L.featureGroup(this.markers);
       this.map.fitBounds(group.getBounds());
     }
+  }
+
+  centerOnLocation(location: { latitude: number; longitude: number }) {
+    this.map.setView([location.latitude, location.longitude], 15);
   }
 }

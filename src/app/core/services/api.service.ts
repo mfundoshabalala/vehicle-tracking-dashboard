@@ -1,19 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Vehicle } from '../models/vehicle.model';
-import { BehaviorSubject, Observable, of } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
-  private vehicles: Vehicle[] = [];
-
   private vehicleSubject = new BehaviorSubject<Vehicle[]>([]);
   private vehicles$ = this.vehicleSubject.asObservable();
   private mockDataUrl = 'assets/data/mock-data.json';
 
   constructor(private http: HttpClient) {
+    this.startSimulatingMovement();
     this.loadInitialData();
   }
 
@@ -28,18 +27,25 @@ export class ApiService {
     return this.vehicles$;
   }
 
-  update(id: string, updatedVehicle: Partial<Vehicle>): Observable<Vehicle> {
-    const vehicles = this.vehicleSubject.value;
-    const vehicleIndex = vehicles.findIndex((vehicle) => vehicle.id === id);
-    if (vehicleIndex === -1) throw new Error("Vehicle not found");
+  private startSimulatingMovement() {
+    setInterval(() => {
+      const vehicles = this.vehicleSubject.value.map(vehicle => {
+        const updatedVehicle = {
+          ...vehicle,
+          latitude: this.adjustCoordinate(vehicle.latitude),
+          longitude: this.adjustCoordinate(vehicle.longitude),
+          timestamp: new Date()
+        };
+        return updatedVehicle;
+      });
 
-    vehicles[vehicleIndex] = {
-      ...vehicles[vehicleIndex],
-      ...updatedVehicle,
-      timestamp: updatedVehicle.timestamp || vehicles[vehicleIndex].timestamp,
-    };
-    this.vehicleSubject.next(vehicles);
+      this.vehicleSubject.next(vehicles);
+    }, 30000);
+  }
 
-    return of(vehicles[vehicleIndex]);
+  private adjustCoordinate(coordinate: number): number {
+    const movementFactor = 0.01;
+    const randomMovement = (Math.random() - 0.5) * movementFactor;
+    return coordinate + randomMovement;
   }
 }
