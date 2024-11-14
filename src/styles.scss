@@ -13,3 +13,17 @@ body {
 app-root {
   @apply h-full flex flex-col;
 }
+
+h1 {
+  @apply text-3xl font-semibold font-mono;
+}
+
+a {
+  @apply cursor-pointer;
+}
+
+button {
+  @apply cursor-pointer font-semibold transition-colors px-4 py-2;
+  @apply border rounded shadow-sm hover:shadow-none active:border-slate-900;
+  @apply disabled:bg-gray-300 disabled:cursor-not-allowed disabled:text-gray-700;
+}

@@ -1,5 +1,4 @@
-<app-loading *ngIf="showAnimation" (onAnimationDone)="onAnimationDone()">
-</app-loading>
-<div class="flex-1 flex justify-center items-center">
-  <router-outlet *ngIf="!showAnimation"></router-outlet>
-</div>
+<app-loading *ngIf="showAnimation" (onAnimationDone)="onAnimationDone()" />
+<ng-container *ngIf="!showAnimation">
+  <router-outlet></router-outlet>
+</ng-container>

@@ -29,7 +29,7 @@ export class LoadingComponent {
   @Output() animationDone = new EventEmitter<boolean>();
 
   protected lottieConfig: AnimationOptions = {
-    path: '/assets/animation.json',
+    path: '/assets/animations/loading.json',
     loop: true
   }
 

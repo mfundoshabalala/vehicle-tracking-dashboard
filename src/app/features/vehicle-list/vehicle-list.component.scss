@@ -7,7 +7,7 @@ table {
 }
 
 thead th {
-  @apply bg-gray-100 text-gray-600 uppercase text-sm leading-normal py-3 px-6 text-left border-b border-gray-300;
+  @apply bg-gray-100 text-gray-700 uppercase text-sm leading-normal py-3 px-6 text-left border-b border-gray-300;
 }
 
 tbody tr {
@@ -15,5 +15,5 @@ tbody tr {
 }
 
 tbody td {
-  @apply py-3 px-6 text-left whitespace-nowrap;
+  @apply py-3 px-6 text-left whitespace-nowrap text-gray-800;
 }

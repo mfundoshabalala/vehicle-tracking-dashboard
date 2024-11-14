@@ -1,0 +1,17 @@
+<table>
+  <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{ header | titlecase }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows; let rowIndex = index">
+      <td *ngFor="let cell of row; let cellIndex = index">
+        <ng-container *ngIf="headers[cellIndex] === 'status'; else regularCell">
+          <app-status-indicator [status]="cell"></app-status-indicator>
+        </ng-container>
+        <ng-template #regularCell>{{ cell }}</ng-template>
+      </td>
+    </tr>
+  </tbody>
+</table>

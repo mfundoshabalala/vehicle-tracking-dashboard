@@ -1,0 +1,82 @@
+[
+  {
+    "id": "vehicle_1",
+    "registration": "CA 123 456",
+    "latitude": -33.9258,
+    "longitude": 18.4232,
+    "timestamp": "2023-11-08T12:00:00Z",
+    "status": "in transit"
+  },
+  {
+    "id": "vehicle_2",
+    "registration": "CA 654 321",
+    "latitude": -34.0000,
+    "longitude": 18.5000,
+    "timestamp": "2023-11-08T12:05:00Z",
+    "status": "stopped"
+  },
+  {
+    "id": "vehicle_3",
+    "registration": "CA 987 654",
+    "latitude": -33.9123,
+    "longitude": 18.4510,
+    "timestamp": "2023-11-08T12:10:00Z",
+    "status": "parked"
+  },
+  {
+    "id": "vehicle_4",
+    "registration": "CA 321 987",
+    "latitude": -33.9400,
+    "longitude": 18.4000,
+    "timestamp": "2023-11-08T12:15:00Z",
+    "status": "in transit"
+  },
+  {
+    "id": "vehicle_5",
+    "registration": "CA 456 789",
+    "latitude": -34.0200,
+    "longitude": 18.4600,
+    "timestamp": "2023-11-08T12:20:00Z",
+    "status": "stopped"
+  },
+  {
+    "id": "vehicle_6",
+    "registration": "CA 789 123",
+    "latitude": -33.9100,
+    "longitude": 18.4800,
+    "timestamp": "2023-11-08T12:25:00Z",
+    "status": "in transit"
+  },
+  {
+    "id": "vehicle_7",
+    "registration": "CA 159 753",
+    "latitude": -34.0500,
+    "longitude": 18.4900,
+    "timestamp": "2023-11-08T12:30:00Z",
+    "status": "parked"
+  },
+  {
+    "id": "vehicle_8",
+    "registration": "CA 852 963",
+    "latitude": -33.9300,
+    "longitude": 18.4100,
+    "timestamp": "2023-11-08T12:35:00Z",
+    "status": "stopped"
+  },
+  {
+    "id": "vehicle_9",
+    "registration": "CA 753 951",
+    "latitude": -33.9150,
+    "longitude": 18.4350,
+    "timestamp": "2023-11-08T12:40:00Z",
+    "status": "in transit"
+  },
+  {
+    "id": "vehicle_10",
+    "registration": "CA 654 987",
+    "latitude": -33.9000,
+    "longitude": 18.4700,
+    "timestamp": "2023-11-08T12:45:00Z",
+    "status": "parked"
+  }
+]

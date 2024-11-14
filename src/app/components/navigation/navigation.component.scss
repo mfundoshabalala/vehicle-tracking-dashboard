@@ -1,0 +1,31 @@
+:host {
+  @apply w-full;
+}
+
+// header {
+//   @apply flex flex-col p-6 w-full text-slate-700 gap-y-4;
+// }
+
+// nav {
+//   @apply flex w-full items-center;
+// }
+
+// nav>div {
+//   @apply mr-auto;
+// }
+
+// nav ul {
+//   @apply flex gap-x-3;
+// }
+
+// nav a {
+//   @apply hover:underline hover:text-slate-900;
+// }
+
+// header>div {
+//   @apply space-x-4;
+// }
+
+header button {
+  @apply border-slate-300 hover:text-slate-900 active:bg-slate-600 active:text-white;
+}

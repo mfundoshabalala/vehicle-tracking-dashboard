@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router, RouterOutlet } from '@angular/router';
-import { LoadingComponent } from './loading/loading.component';
+import { LoadingComponent } from './features/loading/loading.component';
 
 @Component({
   selector: 'app-root',
@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         setTimeout(() => {
           this.showAnimation = false;
-        }, 5000);
+        }, 1000);
       }
     });
   }
